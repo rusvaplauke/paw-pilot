@@ -9,20 +9,20 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/APItemplate.WebAPI/APItemplate.WebAPI.csproj", "src/APItemplate.WebAPI/"]
+COPY ["src/PawPilot.WebAPI/PawPilot.WebAPI.csproj", "src/PawPilot.WebAPI/"]
 COPY ["src/Infrastructure/Infrastructure.csproj", "src/Infrastructure/"]
 COPY ["src/Application/Application.csproj", "src/Application/"]
 COPY ["src/Domain/Domain.csproj", "src/Domain/"]
-RUN dotnet restore "./src/APItemplate.WebAPI/./APItemplate.WebAPI.csproj"
+RUN dotnet restore "./src/PawPilot.WebAPI/PawPilot.WebAPI.csproj"
 COPY . .
-WORKDIR "/src/src/APItemplate.WebAPI"
-RUN dotnet build "./APItemplate.WebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/src/PawPilot.WebAPI"
+RUN dotnet build "./PawPilot.WebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./APItemplate.WebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./PawPilot.WebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "APItemplate.WebAPI.dll"]
+ENTRYPOINT ["dotnet", "PawPilot.WebAPI.dll"]

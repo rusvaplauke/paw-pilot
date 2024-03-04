@@ -9,7 +9,7 @@ databaseChangeLog:
             splitStatements: false
         rollback:
         - sqlFile:
-            path: Migrations/001_create_tables_rollback.sql
+            path: Migrations/002_create_tables_rollback.sql
             relativeToChangelogFile: true
             splitStatements: false
     - changeSet:

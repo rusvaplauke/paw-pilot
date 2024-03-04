@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 
-namespace APItemplate.WebAPI.Middlewares;
+namespace PawPilot.WebAPI.Middlewares;
 
 public class ExceptionHandlingMiddleware
 {
