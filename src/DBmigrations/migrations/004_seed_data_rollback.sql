@@ -1,0 +1,3 @@
+DELETE FROM breeds;
+DELETE FROM areas;
+DELETE FROM species;

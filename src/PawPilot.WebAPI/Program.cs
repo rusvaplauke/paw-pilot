@@ -1,11 +1,11 @@
 
-using APItemplate.WebAPI.Middlewares;
+using PawPilot.WebAPI.Middlewares;
 using Application;
 using Infrastructure;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
-namespace APItemplate.WebAPI
+namespace PawPilot.WebAPI
 {
     public class Program
     {
